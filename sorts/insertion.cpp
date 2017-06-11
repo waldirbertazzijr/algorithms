@@ -10,7 +10,7 @@ void print(std::string s) {
     std::cout << s << std::endl;
 }
 
-void insertion_sort(IntList * arr) {
+void sort(IntList * arr) {
     int i, j;
     size_t chave;
 
@@ -42,6 +42,6 @@ int main()
 
     // Do the job
     print_vector(array);
-    insertion_sort(array);
+    sort(array);
     print_vector(array);
 }
