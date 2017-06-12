@@ -2,15 +2,12 @@
 #include <string>
 #include "../common.h"
 #include "../helpers/vectors.h"
+#include "../helpers/print.h"
 
 
-#define ARRAY_SIZE 10
+#define ARRAY_SIZE 100
 
-void print(std::string s) {
-    std::cout << s << std::endl;
-}
-
-void sort(IntList * arr) {
+void sort(IntList * arr, int * iter) {
     int i, j;
     size_t chave;
 
@@ -28,6 +25,8 @@ void sort(IntList * arr) {
 		while ((j >= 0) && (arr->at(j) > chave)) {
 			arr->at(j + 1) = arr->at(j);
 			j--;
+
+            *iter = *iter + 1;
 		}
 
 		arr->at(j + 1) = chave;
@@ -36,12 +35,16 @@ void sort(IntList * arr) {
 
 int main()
 {
+    int iter = 0;
+
     IntList *array = new IntList(ARRAY_SIZE);
 
     fill_vector_with_random_data(array);
 
     // Do the job
-    print_vector(array);
-    sort(array);
-    print_vector(array);
+    print(array);
+    sort(array, &iter);
+    print(array);
+
+    printf("Finishes using %u iterations.\n", iter);
 }
